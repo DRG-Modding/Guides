@@ -1,0 +1,2 @@
+# IMPORTANT:
+The old guide has been included as there are guides in it that the current version of the new guide does not contain. Some of these may be irrelevant now, and many of the links may not work. But it should still be useful for you!
