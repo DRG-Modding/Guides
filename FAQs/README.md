@@ -4,7 +4,7 @@ Anyone can contribute to this project by creating a pull request.
 ### Packing/Unpacking
 - UE version needs to be 4.25.xx
 - Paths in the input.txt and pack.bat/unpack.bat need enclosing "" for any paths containing spaces
-- In the input.txt there should be a '\' after input -> "Path\DRGpacker\input<b>\</b>" "../../../FSD/"
+- In the input.txt there should be a '\' after input -> "Path\DRGpacker\input<b>\\</b>" "../../../FSD/"
 - Common path example for the mod files would be "DRGpacker\input\\**Content**\WeaponsNTools"
 - It is important to be consistent here so with the above input.txt, don’t skip neither "input" nor "Content" in the path to the mod files
 
