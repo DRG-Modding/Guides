@@ -1,3 +1,2 @@
-Stuff that still needs to be added:
-
-- How to dummy sound classes/mixes
+# This PDF guide is now unmaintained
+Please use the guide on [mod.io](https://drg.mod.io/guides/drg-mods-a-comprehensive-guide-to-audio-modding).
