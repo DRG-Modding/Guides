@@ -1,0 +1,177 @@
+<h2>DRG Mods: An Introduction to Modding</h2>
+<blockquote>
+<p>Please do not hesitate to ask for help on the <a href="https://discord.gg/zQMKGTStfa">DRG Modding Discord</a> in #mod-questions!</p>
+<p><strong>Credits:<br /></strong>Rauliken - Originally wrote guide.<br />Jen Walter - Original guide contributor.<br />Pacagma - Original guide contributor.<br />NaturalBornCamper - Original guide contributor.<br />Akira Fudo - Original guide contributor.<br />Buckminsterfullerene - Maintains guide and moved to mod.io.</p>
+</blockquote>
+<hr />
+<h2>Contents</h2>
+<ul>
+<li>1. Introduction and tools
+<ul>
+<li>1.1 The basic knowledge</li>
+<li>1.2 The basic tools</li>
+</ul>
+</li>
+<li>2. Things to learn before modding
+<ul>
+<li>2.1 Unpacked the game's files</li>
+<li>2.2 Checking the content of the files</li>
+<li>2.3 Packing your mod files
+<ul>
+<li>2.3.1 File packing method</li>
+<li>2.3.2 Mod installation and uploading</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>3. How to mod
+<ul>
+<li>3.1 Hex mods</li>
+<li>3.2 Other mods</li>
+</ul>
+</li>
+<li>4. Conclusion</li>
+</ul>
+<hr />
+<h2>1. Introduction and tools</h2>
+<h3>1.1 The basic knowledge</h3>
+<p>There&rsquo;s still a lot of things to do in DRG even if you have all the cosmetics and promoted all characters to the max level. Welcome to DRG modding, you are going to like this game even more after learning how to mod it. If you find it too difficult just try the current mods that the modders have released and have some fun. I&rsquo;m at 1k hours myself and I would have stopped playing if it wasn&rsquo;t for the amazing mods.</p>
+<p><strong>Some VERY IMPORTANT THINGS before starting:</strong></p>
+<ol>
+<li>Make sure you&rsquo;ve read the official info about DRG&rsquo;s mod support in the links below. I&rsquo;m not going to go into details here so make sure you read them to understand the basics. The main post <a href="https://steamcommunity.com/games/DeepRockGalactic/announcements/detail/2953787944888179529">here</a>. The FAQ with some additional info <a href="https://www.deeprockgalactic.com/modding-support-faq">here</a>. You can also check the 3 guides created by GSG in the mod.io guides section.</li>
+<li>Mods are only hosted here on mod.io. Use the modding menu inside the game to create an account automatically so you can upload your mods.</li>
+<li>Your vanilla or modded save files are safe because mods will not corrupt/mess with it unless you use the tools maliciously. If you are concerned about this use the save clone and backup feature that the game provides in the menu.</li>
+<li>This guide only covers the bare minimum so if you want to learn more make sure you check all the other guides in the <code>#learn-guides</code> channel in the <a href="https://discord.gg/zQMKGTStfa">DRG Modding Discord</a>.</li>
+</ol>
+<p>I highly recommend reading sections 1. and 2. from top to bottom if it&rsquo;s your first time.</p>
+<h3>1.2 Basic tools</h3>
+<p>First you are gonna need some tools to start modding. You can get a .zip of all of the tools explained here from the <strong>[Tool] Basic Modding Tools</strong> post in the <code>#learn-tools</code> channel in the <a href="https://discord.gg/zQMKGTStfa">DRG Modding Discord</a>. This is an overview of the basic tools, and then in the next section I will show you how to use them.</p>
+<p><strong>1. FSD-WindowsNoEditor.pak </strong></p>
+<p>This is the main file of the game, which contains all the rest of the files. It&rsquo;s &ldquo;paked&rdquo; with Unreal Engine so we need to extract the files if we want to modify them.</p>
+<p>You can find it in <code>&hellip;\Program Files (x86)\Steam\steamapps\common\Deep Rock Galactic\FSD\Content\Paks</code>. You obviously need the game installed and NEVER DELETE THIS FILE, just copy it if you need it later. If you don&rsquo;t know how to access this folder go to <code>Steam library -&gt; right click DRG &gt; Properties &gt; Local Files &gt; Browse Local Files</code>. If you want to make a lot of mods it is recommended to make a dedicated space for the extracted files inside it when we get to that point.</p>
+<p><strong>2. DRG Packer</strong></p>
+<p>This tool will allow us to extract the files from <code>FSD-WindowsNoEditor.pak</code> and will also let us pack our own files. The files that you extract will have the extensions <code>.uexp</code> and <code>.uasset</code> which are Unreal Engine files. More on this on <code>2.1 Unpacking the game&rsquo;s files</code>.</p>
+<p><strong>For older users of the guide:</strong> <em>you don&rsquo;t need UEE anymore with the new version of the packer if you just want to make hex mods. </em></p>
+<p><strong>3. UAssetGUI</strong></p>
+<p>This is used to see the contents of the files and change values. You are going to need it if you want to make mods that change a value/s inside the game files. There will be an example in <code>3.1 Hex mods</code>. <code>adolescent#9927</code> is the developer of <code>UAssetGUI</code> and is in our Discord so you can head to our dedicated <a href="https://discord.com/channels/676880716142739467/883533585657757696">thread</a> to ask him any questions. If the tools don&rsquo;t work then you may need to download the <a href="https://dotnet.microsoft.com/download">.NET Runtime</a>. You can find the Github repository for this open-source tool <a href="https://github.com/atenfyr/UAssetGUI/">here</a>.</p>
+<p><strong>4. EmptyContentHierarchy</strong></p>
+<p>These are all the folders inside an extracted <code>FSD-WindowsNoEditor.pak</code> but empty, just the folders. This will be useful later to pack files and for UEE in other guides. Each major update will have a different one, so make sure you get the one from the most recent version of the DRG Modding tools ZIP.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/ech_1.png" alt="ech 1" /></p>
+<p><strong>5. UModel</strong></p>
+<p>This tool will allow you to extract the audio files, textures, 3D models etc. This is different from DRG Packer because that just extracts the <em>cooked </em><code>.uexp</code> and <code>.uasset</code> files whereas if you want to dive deeper and get the raw original sounds, textures, etc. you are going to need this. You can find it in the modding tools .zip as well as at the <a href="https://www.gildor.org/en/projects/umodel">official website</a>.</p>
+<p><strong>6. FModel</strong></p>
+<p>This tool will give you "readable" files (JSON) from the <code>.uexp</code> and <code>.uasset</code> pair files. UAssetGUI already parses the files but they may have problems and in my opinion it&rsquo;s easier to search for that value you want to change in FModel before you edit it. It can also extract raw sounds but not as well or as easily as with UModel. Again, you can find this in the modding tools .zip as well as the <a href="https://fmodel.app">website</a>.</p>
+<p><strong>7. Unreal Engine Editor (UEE)</strong></p>
+<p>If you want to make mods to replace audio and textures you need this. You can also create your own Unreal Engine blueprints (which are way more complex than hex editing mods or audio mods but can do more stuff). You can find it <a href="https://www.unrealengine.com/en-US/">here</a>. Unfortunately you need to download the Epic Games Store even though we just want Unreal Engine and not the games but if you want to avoid downloading the store, or use Linux, you will need to build from source, which you can google how to do.</p>
+<p><strong>You are going to need to download the version that DRG is made with, which is version 4.27.2.</strong></p>
+<p>Go to the Library, add a new version with the + symbol -&gt; click the arrow next to install -&gt; and the version. You only need the <strong>basic installation</strong> so you can configure it and remove everything but the basic stuff so the installation takes only like <strong>13 GB</strong> of storage instead of 30+ GB.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/ue.png" alt="ue" width="375" height="214" /></p>
+<p><strong>8. Other tools</strong></p>
+<p>Those are the main tools you need but there&rsquo;s way more in the tools channel in the modding discord (tools for specific types of mods, console unlocker, research tools etc).</p>
+<hr />
+<h2>2. Things to learn before modding</h2>
+<h3>2.1 Unpacking the game's files</h3>
+<p>First you are going to need to download the basic tools zip in our discord. This is our fresh DRG Packer folder after extraction:</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/drgpacker_1.png" alt="drgpacker 1" width="272" height="196" /></p>
+<p>Now we want to extract all the files from <code>FSD-WindowsNoEditor.pak</code>. Simply copy drag and drop <code>FSD-WindowsNoEditor.pak</code> into <code>_Unpack.bat</code>.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/drgpacker_2.png" alt="drgpacker 2" width="543" height="240" /></p>
+<p>Now wait for the extraction to complete. The command line window will say &ldquo;Press any key to continue&hellip;&rdquo; when it&rsquo;s done you will see a new folder called <code>FSDWindowsNoEditor</code>. The files of the game are inside it.</p>
+<p>We are not going to use the contents of the <code>Engine</code> subfolder and the other folders<br />inside <code>FSD</code> that are not <code>Content</code>.</p>
+<p><strong>You need to re-extract the files again for each update the game receives.</strong></p>
+<h3>2.2 Checking the content of the files</h3>
+<p>If you go to the <code>FSD/Content</code> folder, you will find the extracted files. All of these contain the pairs of <code>.uexp</code> and <code>.uasset</code> files that we are going to need.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/drgpacker_3.png" alt="drgpacker 3" width="546" height="418" /></p>
+<p>For example, if we go to <code>FSD\Content\WeaponsNTools\FlameThrower</code> we can see all the files for the flamethrower. For editing values like upgrades or base stats we can open some of the files using a software like <code>FModel</code> or <code>UAssetGUI</code> to have more readable text.</p>
+<p>We are going to be working on this file later in <code>3.1 Hex mods</code> to learn how to search for and change the values inside. If you want to extract other things like sounds or textures you will need to use UModel and extract the desired file/s. For example, we open it to get one of Molly&rsquo;s sound files.</p>
+<p>Select the <code>FSD-WindowsNoEditor\FSD\Content</code> folder, select these settings and press OK:</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/umodel_1.png" alt="umodel 1" /></p>
+<p>We navigate the folder tree until we find our file or a folder with all the files we need (you can extract the whole Audio folder for example if you want all the sounds in the game), and after selecting extract we select an output folder:</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/umodel_2.png" alt="umodel 2" width="626" height="300" /></p>
+<p>If it&rsquo;s a sound, 3D model, texture file etc you will get a few files in the extraction folder.</p>
+<h3>2.3 Packing your mod files</h3>
+<h4>2.3.1 File packing method</h4>
+<p>I&rsquo;m going to use the example from the flamethrower file before (imagine we already edited it even though that comes later in the tutorial). You should probably read about <code>Empty Content Hierarchy</code> if you haven&rsquo;t already.</p>
+<p>In the flamethrower example, the file is <code>UPG_FlameThrower_A_RangeIncrease</code> which is inside <code>FSD\Content\WeaponsNTools\FlameThrower</code>. To pack mods correctly we are going to need to replicate the same folder structure that we got on the output folder (unpacked <code>FSD-WindowsNoEditor.pak</code>) but inside the <code>Input</code> folder.</p>
+<p>You can just open the .zip from <code>Empty Content Hierarchy</code> (which has all the folders from the game but empty) and drop the <code>Content</code> folder in it inside <code>Input</code> and replace the placeholder one there:</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/ech_2.png" alt="ech 2" width="454" height="209" /></p>
+<p>In this case we just want to work with 1 weapon so you don&rsquo;t need to have the rest of the folders. You can just drop the <code>WeaponsNTools</code> folder inside <code>Input -&gt; Content</code>.</p>
+<p>You can also delete everything but the <code>FlameThrower</code> folder too. I recommend having a backup of each folder structure for each mod you make, for easier packing, instead of just having all of the empty folders and having to search where you put the files.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/ech_3.png" alt="ech 3" width="455" height="335" /></p>
+<p>This will be the final path of the flamethrower files:</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/2.3_1.png" alt="2 3 1" width="458" height="132" /></p>
+<p>You can do the process before for any number of files that you modded.</p>
+<p>Be careful when leaving folders in <code>Input -&gt; Content</code> after packing because maybe you&rsquo;ll start making a new mod and forget you still had the old mod files in there.</p>
+<p>Now just drag and drop the Input folder into <code>_Repack.bat</code>. (FSD here is just the extracted files from before, I recommend renaming them to the update where they are from).</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/drgpacker_4.png" alt="drgpacker 4" width="373" height="204" /></p>
+<p>Check the &ldquo;Added x files&rdquo; line. If you have for example 2 files in the mod check that the number is correct so it says &ldquo;Added 2 files&rdquo;. If there&rsquo;s less than what you expect you forgot to put some files in the input folder, if it&rsquo;s more than expected then you forgot to remove files from a previously packed mod.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/drgpacker_5.png" alt="drgpacker 5" width="712" height="230" /></p>
+<p>So, the summary of packing is that we only need to add or remove files inside the <code>Empty Content Hierarchy</code> (FSD and subfolders) with the correct folder structure compared to the vanilla files. It can get pretty messy if you forget to add/remove files when making new mods so (again) I recommend having a backup of each folder structure for each mod you make, for better organization and future updating.</p>
+<h3>2.3.2 Mod installation and uploading</h3>
+<p>To install a mod <strong>for your own testing purposes before uploading</strong>, simply move the .pak than you made in the previous step to: <code>&hellip;\Steam\steamapps\common\Deep Rock Galactic\FSD\Content\Paks</code>. You <strong>MUST</strong> put <code>_P</code> at the end of the <code>.pak</code> name in order for the game to load it.</p>
+<p>Unreal Engine automatically replaces the original file(s) in <code>FSD-WindowsNoEditor.pak</code> when the game loads, with the file(s) that you modified in your mod.</p>
+<p>In the in-game modding menu, your mod will show up as "depreciated" and will force you into a sandbox save.</p>
+<p>To <strong>upload your mod to mod.io</strong> after testing your modname_P.pak, first read the following guidelines if you have not already done so:</p>
+<ul>
+<li><a href="https://drg.mod.io/guides/mod-guidelines-and-status-categories">Mod categories</a></li>
+<li><a href="https://drg.mod.io/guides/approval-process-and-checklist-for-upload">And this other one to learn what you need to do before uploading a mod</a></li>
+</ul>
+<p>After that click on the + button on drg.mod.io and follow the simple steps.</p>
+<hr />
+<h2>3. How to mod</h2>
+<p>There&rsquo;s different types of mods that you can make for DRG:</p>
+<ol>
+<li>Hex - can be used to edit values and are extremely easy to make</li>
+<li>Audio - is also easy but takes a bit more time as well as Unreal Engine Editor</li>
+<li>Model/texture - can be fiddly to make and ideally requires knowledge in the field before starting but leads to very appealing mods</li>
+<li>Blueprint - uses Unreal Engine blueprint to create complex behaviour as it has full logical capabilities and can interact with the game's underlying code</li>
+</ol>
+<p>In this guide I&rsquo;ll be explaining the basic hex mods. At the end I&rsquo;ll mention a few of the other guides to get you started with more complex mods. As always you can find everything <code>#learn-tools</code> channel in our modding discord.</p>
+<h3>3.1 Hex mods</h3>
+<p>We have the hex mods, which edit values inside the .uasset and <code>.uexp</code> files (all files are in pairs of these types) and replace the original files with your new ones when the game loads. These values can be integers, text, booleans, floats etc. Most of the values should be easy to find just by using the armory inside DRG but you need to keep a few things in mind.</p>
+<p>We need to know the value that we are going to change but also the file where it is located. You can check the <code>File Prefix List</code> made by Elythnwaen in the <code>#learn-tools</code> channel.</p>
+<p>I&rsquo;m gonna be working with the file that I used in the packing example before, in <code>2.3.1 File packing</code> method. In this case our mod is going to have only one file which is called <code>UPG_FlameThrower_A_RangeIncrease.uexp</code> and as you can tell by the prefix <code>UPG</code> this is the file that controls the range upgrade for driller&rsquo;s flamethrower.</p>
+<p>I&rsquo;m going to be using <code>UAssetGUI</code>. Open the <code>.uasset</code> and explore a bit. To change a value go one of the categories:</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/uagui_1.png" alt="uagui 1" width="779" height="240" /></p>
+<p>In the <code>Amount</code> field is the value we are looking for. It&rsquo;s <code>500</code> because the upgrade of <code>+5</code> in game is measured in meters and it's centimeters in the files. Some values can be more obvious than this. We&rsquo;ll change it to <code>2000</code> so it becomes a <code>20</code> meter range upgrade.</p>
+<p>If you can&rsquo;t find the value try using <code>FModel</code>. Open the main <code>.pak</code> from the game, navigate to the folder, go to the <code>Assets</code> tab on the top right and open the file. Use <code>CTRL+F</code> to search stuff. This is pretty useful in other files that have a lot of stuff but isn&rsquo;t really needed for this small change.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/fmodel_2.png" alt="fmodel 2" width="782" height="323" /></p>
+<p>Finally, we just save the file in <code>UAssetGUI</code> with <code>CTRL+S</code> or <code>File -&gt; Save</code> and we are ready to pack our mod. You will get 2 new files and the tools might make a backup (.bak) of the original ones.</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/uagui_2.png" alt="uagui 2" width="462" height="137" /></p>
+<p>You should know how to pack that those file pairs with one of the methods that I showed you earlier in <code>2.3 Packing your mod files</code>. I used these exact files in both examples to make it easier to understand the whole process.</p>
+<p>After packing, just follow <code>2.3.2 Mod installation</code> and you are ready to test your new flamethrower upgrade that will add <code>+20</code> meters instead of <code>+5</code>. As you can see in the armory when I hover over the range upgrade it now gives us <code>20</code> extra range. You can try the range overclock too for some insane flame reach :P</p>
+<p><img src="https://image.modcdn.io/members/6da1/6436408/profilegeneral/demo_1.png" alt="demo 1" width="599" height="484" /></p>
+<p>Here&rsquo;s a quick guide of all the steps for hex mods:</p>
+<ol>
+<li>Extract <code>.pak</code> files with DRG Packer by dragging the <code>.pak</code> into <code>_Unpack.bat</code>.</li>
+<li>(Optional) Read the files with <code>FModel</code> if you want more info about the value you want to change.</li>
+<li>Open the <code>.uasset</code> file you want to change with a <code>UAssetGUI</code> and edit the values you want.</li>
+<li>Now to turn it back into <code>.pak</code> again follow these steps: (an example for the barrel kick force mod that modifies only <code>PST_BarrelKicking.uexp</code>):
+<ol>
+<li>Create the same folder structure inside <code>DRGpacker -&gt; Input -&gt; Content</code> as the original extracted files had and add the modified files, so: <code>/GameElements/PawnStats/PST_BarrelKicking.uexp</code></li>
+<li>Drag and drop the <code>Input</code> folder to <code>_Repack.bat</code> and check that there are no errors.</li>
+</ol>
+</li>
+<li>Put the generated <code>new_P.pak</code> file in to test it: <code>&hellip;\Steam\steamapps\common\DeepRockGalactic\FSD\Content\Paks</code></li>
+<li>After testing it to make sure it works, rename it to <code>InsertNameHere.pak</code>, as you don&rsquo;t need the <code>_P</code> anymore.</li>
+<li>Upload to mod.io after reading the guidelines. Write proper descriptions and choose the correct category. You should have no issue if you read the info links.</li>
+</ol>
+<p>And there&rsquo;s a few important things about mods:</p>
+<ol>
+<li>If your game crashes, <strong>DO NOT send the crash report to the devs</strong>. You probably changed the wrong value or changed file size.</li>
+<li>Most but not all mods made this way are client side, the meaning of this is that unless the host has the mod, or you are the host, it won&rsquo;t work. It&rsquo;s also like this for other mods like the difficulty mods (haz 6 etc) and blueprint mods. Audio mods are always client side.</li>
+<li>As I explained in the packing tutorial, you can have more than 1 file in a mod. You don&rsquo;t need to make 10 .pak files if you modify 10 files, just make a single one by adding more files with the correct paths to the <code>Input -&gt; Content</code> folder.</li>
+<li>You can change a lot of things with hex editing, not only the weapon&rsquo;s stats. If for example you change a perk, you will need to try the changes inside a mission to make sure they work because those don&rsquo;t show up in the armory.</li>
+<li>This type of modding is the most basic but It will complement the others. For complex "hex style" mods like adding overclocks, changing character inventories&hellip; you should use blueprint modding with the reconstructed content to make it all very easy for you to edit.</li>
+</ol>
+<h3>3.2 Other mods</h3>
+<p>Now that you know the basics you are free to check all the other guides and tools.</p>
+<p>For audio and blueprint mods the user <code>Buckminsterfullerene#6666</code> has made some great ones.</p>
+<p>For model and texture replacement <code>Pacagma#1515</code> is your guy.</p>
+<p>There&rsquo;s many more like the more complex hex mods with the DAUM guide, string replacement etc. Explore a bit in our discord and look in the learn modding channel category.</p>
+<p>This marks the end of the basic guide but you should keep reading for some final tips and encouragement.</p>
+<hr />
+<h2>4. Conclusion</h2>
+<p>I hope you found the guide simple enough to understand and that you make many great mods. It&rsquo;s been a long time, we started this community with 2-3 modders and a small private discord and now we have members in the thousands, the developers added official mod support and with this guide we have a new modder to welcome :)</p>
+<p>If you ever feel frustrated when making mods don&rsquo;t forget that there&rsquo;s always someone willing to help, it&rsquo;s a very wholesome community. You can find a ton of info in the <code>#mod-chat</code> channel in our discord and there&rsquo;s even a channel where people stream themselves making mods so you can all learn together.</p>
+<p>If you ever want to check some old mods for inspiration, extracting the files to see which ones they changed etc, this is the <a href="https://github.com/ArcticEcho/DRG-Mods">Github repository</a> where the old Update 33 mods were before the modding support update.</p>
+<p>See you in discord and in the mines, ROCK AND STONE!</p>

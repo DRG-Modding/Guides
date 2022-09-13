@@ -10,12 +10,13 @@ If you are a member of the org, please make a folder to categorise your guide(s)
 * [Damage Types](https://github.com/DRG-Modding/Guides/tree/main/Damage%20Types) - Written by Elythwaen
 * [DAUM JSON Generator](https://github.com/DRG-Modding/Guides/tree/main/DAUM%20JSON%20Generator) - Written by Buckminsterfullerene
 * [Common Modding Setup Errors](https://github.com/DRG-Modding/Guides/tree/main/FAQs) - Contributions by Chibba, Buckminsterfullerene & GoldBl4d3
-* [General](https://github.com/DRG-Modding/Guides/tree/main/General%20Guide) - Written by Rauliken, contributions by Jen Walter, Pacagma, NaturalBornCamper and Akira Fudo
 * [Music Breakdown](https://github.com/DRG-Modding/Guides/tree/main/Music%20Breakdown) - Written by Kraeus
+* [Mod.io Guides](https://github.com/DRG-Modding/Guides/tree/main/Mod.io%20Guides) - Backup source code for the Mod.io guides written & maintained by Buckminsterfullerene
 * Many other guides listed in the `#learn-guides` channel on Discord.
 
 ### Archived guides
 Guides that are not maintained and relevant anymore.
+* [General](https://github.com/DRG-Modding/Guides/tree/main/Archived/General%20Guide) - Written by Rauliken, contributions by Jen Walter, Pacagma, NaturalBornCamper and Akira Fudo
 * [Alternate BP Mod Packaging Method](https://github.com/DRG-Modding/Guides/tree/main/Archived/Alt%20BP%20Paking%20Guide) - Written by Buckminsterfullerene
 * [Using UE4SS](https://github.com/DRG-Modding/Guides/tree/main/Archived/UE4SS%20Guide) - Written by Buckminsterfullerene, tool developed by CheatingMuppet
 * [Audio Modding](https://github.com/DRG-Modding/Guides/tree/main/Audio%20Guide) - Written by Buckminsterfullerene (USE GUIDE ON [MOD.IO](https://drg.mod.io/guides/drg-mods-a-comprehensive-guide-to-audio-modding) INSTEAD)
